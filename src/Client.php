@@ -73,7 +73,7 @@ class Client implements HttpClientInterface
     public function makeLocalPayment(TransactionInterface $transaction): MakeLocalPaymentResponse
     {
         $response = $this->performRequest(HttpMethodEnum::POST, 'Payment/MakeLocalPayment', [
-            'SourceAccount' => $transaction->getSourceAccount(),
+            'SourceAccount' => $this->config->getSourceAccount(),
             'PaymentTypeId' => $transaction->getPaymentType()->value,
             'PaymentMethodId' => $transaction->getPaymentMethod()->value,
             'CorporateCode' => $this->config->getUsername(),

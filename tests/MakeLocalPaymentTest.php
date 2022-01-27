@@ -32,7 +32,6 @@ class MakeLocalPaymentTest extends TestCase
         $transaction->method('getReference')->willReturn('ref1234');
         $transaction->method('getPaymentType')->willReturn(PaymentTypeEnum::OTHER_PAYMENT);
         $transaction->method('getPaymentMethod')->willReturn(PaymentMethodEnum::INSTANT);
-        $transaction->method('getSourceAccount')->willReturn('123465798');
         $transaction->method('getBeneficiaryAccount')->willReturn('45678');
         $transaction->method('getBeneficiaryBankCode')->willReturn('777');
         $transaction->method('getBeneficiaryName')->willReturn('jane doe');

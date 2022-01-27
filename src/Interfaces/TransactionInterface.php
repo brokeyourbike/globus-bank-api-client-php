@@ -19,7 +19,6 @@ interface TransactionInterface
     public function getReference(): string;
     public function getPaymentType(): PaymentTypeEnum;
     public function getPaymentMethod(): PaymentMethodEnum;
-    public function getSourceAccount(): string;
     public function getBeneficiaryAccount(): string;
     public function getBeneficiaryBankCode(): string;
     public function getBeneficiaryName(): string;

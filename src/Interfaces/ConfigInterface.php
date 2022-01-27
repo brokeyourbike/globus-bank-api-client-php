@@ -16,4 +16,5 @@ interface ConfigInterface
     public function getUrl(): string;
     public function getUsername(): string;
     public function getPassword(): string;
+    public function getSourceAccount(): string;
 }
