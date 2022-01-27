@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/brokeyourbike/globus-bank-api-client-php/compare/v0.1.0...v0.2.0) (2022-01-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* move source accountmethod to config
+
+### Bug Fixes
+
+* move source accountmethod to config ([8b78d78](https://www.github.com/brokeyourbike/globus-bank-api-client-php/commit/8b78d78d1b0e921dbe8734a992c783269e5d1cbd))
+
 ## 0.1.0 (2022-01-27)
 
 
