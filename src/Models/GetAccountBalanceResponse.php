@@ -29,8 +29,8 @@ class GetAccountBalanceResponse extends JsonResponse
     public ?string $currency;
 
     #[MapFrom('result.availableBalance')]
-    public ?string $availableBalance;
+    public ?float $availableBalance;
 
     #[MapFrom('result.ledgerBalance')]
-    public ?string $ledgerBalance;
+    public ?float $ledgerBalance;
 }

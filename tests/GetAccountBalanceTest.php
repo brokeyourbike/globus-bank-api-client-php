@@ -9,62 +9,55 @@
 namespace BrokeYourBike\GlobusBank\Tests;
 
 use Psr\Http\Message\ResponseInterface;
-use BrokeYourBike\GlobusBank\Models\GenerateTokenResponse;
+use BrokeYourBike\GlobusBank\Models\GetAccountBalanceResponse;
 use BrokeYourBike\GlobusBank\Interfaces\ConfigInterface;
 use BrokeYourBike\GlobusBank\Client;
 
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
-class GenerateTokenTest extends TestCase
+class GetAccountBalanceTest extends TestCase
 {
-    private string $username = 'john';
-    private string $password = 'secure-password';
-
     /** @test */
     public function it_can_prepare_request(): void
     {
         $mockedConfig = $this->getMockBuilder(ConfigInterface::class)->getMock();
-        $mockedConfig->method('getUrl')->willReturn('https://api.example/');
-        $mockedConfig->method('getUsername')->willReturn($this->username);
-        $mockedConfig->method('getPassword')->willReturn($this->password);
 
         $mockedResponse = $this->getMockBuilder(ResponseInterface::class)->getMock();
         $mockedResponse->method('getStatusCode')->willReturn(200);
         $mockedResponse->method('getBody')
             ->willReturn('{
-                "corpCode": "john",
-                "token": "super-secure-token",
+                "result": {
+                    "accountName": "JOHN LIMITED",
+                    "accountNumber": "123456789",
+                    "currency": "USD",
+                    "availableBalance": 100.01,
+                    "ledgerBalance": 300.00
+                },
                 "responseCode": "00",
                 "responseDescription": "Successful"
             }');
 
         /** @var \Mockery\MockInterface $mockedClient */
         $mockedClient = \Mockery::mock(\GuzzleHttp\Client::class);
-        $mockedClient->shouldReceive('request')->withArgs([
-            'POST',
-            'https://api.example/Auth/GenerateToken',
-            [
-                \GuzzleHttp\RequestOptions::HEADERS => [
-                    'Accept' => 'application/json',
-                ],
-                \GuzzleHttp\RequestOptions::JSON => [
-                    'CorpCode' => $this->username,
-                    'Password' => $this->password,
-                ],
-            ],
-        ])->once()->andReturn($mockedResponse);
+        $mockedClient->expects()
+            ->request(new \Mockery\Matcher\AnyArgs())
+            ->twice()
+            ->andReturns($this->getGenerateTokenResponse(), $mockedResponse);
 
         /**
          * @var ConfigInterface $mockedConfig
          * @var \GuzzleHttp\Client $mockedClient
          * */
         $api = new Client($mockedConfig, $mockedClient);
-        $requestResult = $api->generateToken();
+        $requestResult = $api->getAccountBalance();
 
-        $this->assertInstanceOf(GenerateTokenResponse::class, $requestResult);
-        $this->assertSame('john', $requestResult->corpCode);
-        $this->assertSame('super-secure-token', $requestResult->token);
+        $this->assertInstanceOf(GetAccountBalanceResponse::class, $requestResult);
+        $this->assertSame(100.01, $requestResult->availableBalance);
+        $this->assertSame(300.00, $requestResult->ledgerBalance);
+        $this->assertSame('USD', $requestResult->currency);
+        $this->assertSame('123456789', $requestResult->accountNumber);
+        $this->assertSame('JOHN LIMITED', $requestResult->accountName);
         $this->assertSame('00', $requestResult->responseCode);
         $this->assertSame('Successful', $requestResult->responseDescription);
     }

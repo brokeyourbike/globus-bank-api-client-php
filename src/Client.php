@@ -87,7 +87,7 @@ class Client implements HttpClientInterface
                     'BeneficiaryAccount' => $transaction->getBeneficiaryAccount(),
                     'BeneficiaryName' => $transaction->getBeneficiaryName(),
                     'Narration' => $transaction->getReference(),
-                    'ValueDate' => $transaction->getValueDate(),
+                    'ValueDate' => $transaction->getValueDate()->format('Y-m-d'),
                 ]
             ],
         ]);

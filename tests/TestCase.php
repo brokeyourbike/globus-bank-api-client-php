@@ -8,6 +8,8 @@
 
 namespace BrokeYourBike\GlobusBank\Tests;
 
+use Psr\Http\Message\ResponseInterface;
+
 /**
  * @author Ivan Stasiuk <ivan@stasi.uk>
  */
@@ -17,5 +19,21 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     {
         parent::tearDown();
         \Mockery::close();
+    }
+
+    protected function getGenerateTokenResponse(): ResponseInterface
+    {
+        $mockedResponse = $this->getMockBuilder(ResponseInterface::class)->getMock();
+        $mockedResponse->method('getStatusCode')->willReturn(200);
+        $mockedResponse->method('getBody')
+            ->willReturn('{
+                "corpCode": "john",
+                "token": "super-secure-token",
+                "responseCode": "00",
+                "responseDescription": "Successful"
+            }');
+
+        /** @var ResponseInterface $mockedResponse */
+        return $mockedResponse;
     }
 }
