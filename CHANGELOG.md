@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.2.1](https://www.github.com/brokeyourbike/globus-bank-api-client-php/compare/v0.2.0...v0.2.1) (2022-02-02)
+
+
+### Bug Fixes
+
+* add `PaymentStatusEnum` ([0ff7262](https://www.github.com/brokeyourbike/globus-bank-api-client-php/commit/0ff72629d404982776a31a3472ca15a420e6858d))
+
 ## [0.2.0](https://www.github.com/brokeyourbike/globus-bank-api-client-php/compare/v0.1.0...v0.2.0) (2022-01-27)
 
 
