@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://www.github.com/brokeyourbike/globus-bank-api-client-php/compare/v0.2.1...v0.3.0) (2022-02-02)
+
+
+### Features
+
+* add `getBatchStatus` method ([fb0e957](https://www.github.com/brokeyourbike/globus-bank-api-client-php/commit/fb0e957d191ef99ec7d0d6f530dccd7b026c8059))
+
 ### [0.2.1](https://www.github.com/brokeyourbike/globus-bank-api-client-php/compare/v0.2.0...v0.2.1) (2022-02-02)
 
 
