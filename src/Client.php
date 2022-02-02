@@ -15,6 +15,7 @@ use BrokeYourBike\HttpEnums\HttpMethodEnum;
 use BrokeYourBike\HttpClient\HttpClientTrait;
 use BrokeYourBike\HttpClient\HttpClientInterface;
 use BrokeYourBike\GlobusBank\Models\MakeLocalPaymentResponse;
+use BrokeYourBike\GlobusBank\Models\GetBatchStatusResponse;
 use BrokeYourBike\GlobusBank\Models\GetAccountBalanceResponse;
 use BrokeYourBike\GlobusBank\Models\GenerateTokenResponse;
 use BrokeYourBike\GlobusBank\Interfaces\TransactionInterface;
@@ -68,6 +69,14 @@ class Client implements HttpClientInterface
     {
         $response = $this->performRequest(HttpMethodEnum::POST, 'Payment/GetAccountBalance', []);
         return new GetAccountBalanceResponse($response);
+    }
+
+    public function getBatchStatus(string $batchId): GetBatchStatusResponse
+    {
+        $response = $this->performRequest(HttpMethodEnum::POST, 'Payment/GetPaymentStatus', [
+            'BatchId' => $batchId,
+        ]);
+        return new GetBatchStatusResponse($response);
     }
 
     public function makeLocalPayment(TransactionInterface $transaction): MakeLocalPaymentResponse
