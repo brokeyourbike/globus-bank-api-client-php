@@ -15,6 +15,7 @@ enum PaymentStatusEnum: string
 {
     case PENDING = 'PENDING';
     case PROCESSING = 'PROCESSING';
+    case PROCESSING_SECOND_LEG = 'PROCESSING - SECOND LEG';
     case SUCCESSFUL = 'SUCCESSFUL';
     case FAILED = 'FAILED';
     case REJECTED = 'REJECTED';

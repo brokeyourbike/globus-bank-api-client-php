@@ -7,5 +7,6 @@
 .github/ export-ignore
 tests/ export-ignore
 phpunit.xml export-ignore
+phpstan-baseline.neon export-ignore
 phpstan.neon export-ignore
 psalm.xml export-ignore
