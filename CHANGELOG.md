@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.3.2](https://www.github.com/brokeyourbike/globus-bank-api-client-php/compare/v0.3.1...v0.3.2) (2023-05-14)
+
+
+### Miscellaneous Chores
+
+* badges ([d8f1aeb](https://www.github.com/brokeyourbike/globus-bank-api-client-php/commit/d8f1aebd536541564bdbb6c17ca125ff08e804c3))
+
 ### [0.3.1](https://www.github.com/brokeyourbike/globus-bank-api-client-php/compare/v0.3.0...v0.3.1) (2022-02-08)
 
 
