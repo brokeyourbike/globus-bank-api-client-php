@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.3.3](https://www.github.com/brokeyourbike/globus-bank-api-client-php/compare/v0.3.2...v0.3.3) (2023-05-20)
+
+
+### Miscellaneous Chores
+
+* button ([4739637](https://www.github.com/brokeyourbike/globus-bank-api-client-php/commit/4739637119a4679e39e6908e19a359864d697f7b))
+
 ### [0.3.2](https://www.github.com/brokeyourbike/globus-bank-api-client-php/compare/v0.3.1...v0.3.2) (2023-05-14)
 
 
